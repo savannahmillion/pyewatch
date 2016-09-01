@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  {% for post in site.posts %}
+
+  <div class="post">
+    <h1 id="{{ post.anchor }}">{{ post.title }}</h1>
+    {{ post.content }}
+  </div>
+
+  {% endfor %}
+
+
+</div>

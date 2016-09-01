@@ -1,0 +1,207 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+//
+// CSS Reset
+//
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+//
+// Imports
+//
+@import
+  "bourbon/bourbon",
+  "neat/neat"
+  // "base/base"
+;
+
+//
+// Move me later
+//
+$base-font-size: 1.25rem;
+$base-spacing: 1.25rem;
+$large-spacing: $base-spacing * 2;
+$small-spacing: $base-spacing / 2;
+
+$cornflower: #687FF1;
+$lavendar: #E1E6FD;
+
+$darkgray: #444444;
+$lightgray: #ECEDED;
+
+$tablet: new-breakpoint(max-width 780px 12);
+
+body {
+  font-family: 'Lora', serif;
+  font-size: $base-font-size;
+  line-height: 2rem;
+  display: flex;
+  color: $darkgray;
+  background-color: $lightgray;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+  padding-top: $base-spacing;
+  margin-bottom: $large-spacing;
+}
+
+.left-aside {
+  @include span-columns(3);
+}
+
+.navigation {
+  padding-left: $base-spacing;
+  height: 100vh;
+  position: fixed;
+
+  header {
+    height: 10vh;
+
+    .pye-logo {
+      width: 80px;
+      margin-top: 10px;
+    }
+  }
+
+  nav {
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+
+    ul {
+      list-style-type: none;
+      padding-left: $small-spacing;
+
+      li {
+        display: flex;
+        height: 15vh;
+        margin-bottom: 0px;
+        text-align: center;
+
+        a {
+          text-decoration: none;
+          text-transform: uppercase;
+          letter-spacing: 3px;
+          align-self: center;
+          color: $cornflower;
+          &:hover {
+            color: shade($cornflower, 20%);
+          }
+
+          .nav-thumb {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #fff;
+            border: solid 3px $cornflower;
+            margin-right: $small-spacing;
+
+            @include media($tablet) {
+              display: inline-block;
+              text-align: center;
+              margin-right: 0px;
+            }
+          }
+
+          .nav-text {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
+
+.page-content {
+  @include span-columns(7);
+  @include shift(1);
+  // background-color: blue;
+}
+
+.post {
+  border-bottom: 8px solid $cornflower;
+  margin-bottom: $large-spacing;
+
+  p {
+    margin-bottom: $base-spacing;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    padding: $small-spacing;
+    border: 1px solid $lavendar;
+  }
+}
+
+blockquote {
+  border-left: 4px solid $cornflower;
+  padding-left: $base-spacing;
+}
+
+//
+// Small Screens
+//
+.nav-text {
+  @include media($tablet) {
+    display: none;
+  }
+}

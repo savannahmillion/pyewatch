@@ -1,0 +1,22 @@
+<div class="navigation">
+
+  <header>
+    <img src="img/pye.svg" class="pye-logo"></img>
+  </header>
+
+  <nav>
+    <ul>
+      {% for post in site.posts %}
+        <li>
+          <a href="#{{ post.anchor }}">
+            <img src="{{ post.nav-thumb }}" class="nav-thumb">
+          </a>
+          <a href="#{{ post.anchor }}" class="nav-text">
+            {{ post.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+</div>
